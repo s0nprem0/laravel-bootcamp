@@ -13,35 +13,23 @@
 </head>
 
 <body class="min-h-screen flex flex-col bg-base-200 font-sans">
-    <nav class="navbar bg-base-100">
-        <div class="navbar-start">
-            <a href="/" class="btn btn-ghost text-xl">🐦 Chirper</a>
-        </div>
-        <div class="navbar-end gap-2">
-            <a href="#" class="btn btn-ghost btn-sm">Sign In</a>
-            <a href="#" class="btn btn-primary btn-sm">Sign Up</a>
-        </div>
-    </nav>
 
-    <main class="flex-1 container mx-auto px-4 py-8">
-        <div class="max-w-2xl mx-auto">
-            <div class="card bg-base-100 shadow mt-8">
-                <div class="card-body">
-                    <div>
-                        <h1 class="text-3xl font-bold">Welcome to Chirper!</h1>
-                        <p class="mt-4 text-base-content/60">This is your brand new Laravel application. Time to make it
-                            sing (or chirp)!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+	<x-layout>
+		<x-slot:title>
+			Welcome
+		</x-slot:title>
 
-    <footer class="footer footer-center p-5 bg-base-300 text-base-content text-xs">
-        <div>
-            <p>© 2025 Chirper - Built with Laravel and ❤️</p>
-        </div>
-    </footer>
+		<div class="max-w-2xl mx-auto">
+			<div class="card bg-base-100 shadow mt-8">
+				<div class="card-body">
+					<div>
+						<h1 class="text-3xl font-bold mb-4">Welcome to Chirper!</h1>
+						<p class="text-lg text-gray-700 mb-6">This is your brandnew Laravel application. Start building something amazing!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</x-layout>
 </body>
 
 </html>
