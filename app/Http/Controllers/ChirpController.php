@@ -22,6 +22,9 @@ class ChirpController extends Controller
         // Validate the incoming request data
         $validated = $request->validate([
             'message' => 'required|string|max:255',
+        ], [
+            'message.required' => 'Please write something to chirp!',
+            'message.max' => 'Your chirp is too long! keep it under 255 characters.',
         ]);
 
         // Create the chirp (no user for now, auth later)
@@ -32,4 +35,4 @@ class ChirpController extends Controller
 
         return redirect('/')->with('success', 'Chirp created!');
     }
-    }
+}
