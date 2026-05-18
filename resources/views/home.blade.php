@@ -20,14 +20,17 @@
 		</x-slot:title>
 
 		<div class="max-w-2xl mx-auto">
+			@foreach ($chirps as $chirp)
 			<div class="card bg-base-100 shadow mt-8">
 				<div class="card-body">
 					<div>
-						<h1 class="text-3xl font-bold mb-4">Welcome to Chirper!</h1>
-						<p class="text-lg text-gray-700 mb-6">This is your brandnew Laravel application. Start building something amazing!</p>
+						<h1 class="text-3xl font-bold mb-4">{{ $chirp['author'] }}</h1>
+						<p class="text-lg text-gray-700 mb-6">{{ $chirp['message'] }}</p>
+						<p class="text-sm text-gray-500">{{ $chirp['time'] }}</p>
 					</div>
 				</div>
 			</div>
+			@endforeach
 		</div>
 	</x-layout>
 </body>
