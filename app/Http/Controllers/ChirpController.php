@@ -16,4 +16,20 @@ class ChirpController extends Controller
 
         return view('home', ['chirps' => $chirps]);
     }
-}
+
+    public function store(Request $request)
+    {
+        // Validate the incoming request data
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        // Create the chirp (no user for now, auth later)
+        \App\Models\Chirp::create([
+            'message' => $validated['message'],
+            'user_id' => null, // No user for now, auth later
+        ]);
+
+        return redirect('/')->with('success', 'Chirp created!');
+    }
+    }
