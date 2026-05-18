@@ -20,17 +20,23 @@
 		</x-slot:title>
 
 		<div class="max-w-2xl mx-auto">
-			@foreach ($chirps as $chirp)
+			@forelse ($chirps as $chirp)
 			<div class="card bg-base-100 shadow mt-8">
 				<div class="card-body">
 					<div>
-						<h1 class="text-3xl font-bold mb-4">{{ $chirp['author'] }}</h1>
-						<p class="text-lg text-gray-700 mb-6">{{ $chirp['message'] }}</p>
-						<p class="text-sm text-gray-500">{{ $chirp['time'] }}</p>
+						<div class="font-semibold"> {{ $chirp->user ? $chirp->user->name : 'Anonymous' }}</div>
+						<div class="mt-1">{{ $chirp->message }}</div>
+						<div class="text-sm text-gray-500 mt-2">
+							{{ $chirp->created_at->diffForHumans() }}
+						</div>
 					</div>
 				</div>
 			</div>
-			@endforeach
+			@empty
+			<div class="text-center text-gray-500 mt-8">
+				No chirps yet. Be the first to chirp!
+			</div>
+			@endempty
 		</div>
 	</x-layout>
 </body>
