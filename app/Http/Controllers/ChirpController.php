@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chirp;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ChirpController extends Controller
 {
@@ -22,9 +23,13 @@ class ChirpController extends Controller
         // Validate the incoming request data
         $validated = $request->validate([
             'message' => 'required|string|max:255',
+            Rule::unique('chirps')->where(function ($query) {
+                return $query->where('user_id', auth()->id());
+            }),
         ], [
             'message.required' => 'Please write something to chirp!',
             'message.max' => 'Your chirp is too long! keep it under 255 characters.',
+            'message.unique' => 'You have already chirped that message!',
         ]);
 
         // Create the chirp (no user for now, auth later)
